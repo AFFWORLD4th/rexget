@@ -140,11 +140,14 @@ export default function Header() {
     };
   }, [isOverlayOpen]);
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-t-2 border-gold ${
+    <header className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-t-2 border-gold",
       isScrolled 
         ? 'bg-onyx/95 backdrop-blur-xl border-b border-gold/30 shadow-[0_4px_30px_rgba(212,175,55,0.1)]' 
-        : 'bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm'
-    }`}>
+        : pathname === "/"
+          ? 'bg-transparent border-transparent'
+          : 'bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm'
+    )}>
       <nav className="container mx-auto flex items-center justify-between px-4 sm:px-6 h-20">
         {/* Logo */}
         <div className="flex items-center flex-shrink-0 relative group">
@@ -155,7 +158,10 @@ export default function Header() {
               alt="REXGATE Logo"
               width={120}
               height={40}
-              className="object-contain w-[100px] sm:w-[120px] filter transition-all duration-500 group-hover:brightness-110"
+              className={cn(
+                "object-contain w-[100px] sm:w-[120px] filter transition-all duration-500 group-hover:brightness-110",
+                (!isScrolled && pathname !== "/") && "brightness-0"
+              )}
             />
           </Link>
         </div>
@@ -170,7 +176,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative pb-1 transition-all duration-300 font-medium text-xs uppercase tracking-widest text-gray-600 hover:text-gold",
+                        (isScrolled || (pathname === "/" && !isScrolled)) ? "text-white hover:text-gold" : "text-onyx hover:text-gold",
                         "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0",
                         "after:bg-gold after:transition-all after:duration-500 hover:after:w-full",
                         pathname === link.href && "after:w-full text-gold"
@@ -254,7 +260,7 @@ export default function Header() {
               key={i}
               href={link.href}
               className={cn(
-                  "relative pb-1 transition-all duration-300 font-medium text-xs uppercase tracking-widest text-gray-600 hover:text-gold",
+                  (isScrolled || (pathname === "/" && !isScrolled)) ? "text-white hover:text-gold" : "text-onyx hover:text-gold",
                   "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0",
                 "after:bg-gold after:transition-all after:duration-500 hover:after:w-full",
                 pathname === link.href && "after:w-full text-gold"
@@ -273,8 +279,8 @@ export default function Header() {
         <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
           {/* Currency Display */}
           <div className="hidden md:flex items-center space-x-2">
-            <div className="w-px h-4 bg-gray-300"></div>
-            <div className="flex items-center space-x-1 text-gray-600">
+            <div className={cn("w-px h-4", (isScrolled || (pathname === "/" && !isScrolled)) ? "bg-white/20" : "bg-onyx/20")}></div>
+            <div className={cn("flex items-center space-x-1", (isScrolled || (pathname === "/" && !isScrolled)) ? "text-white" : "text-onyx")}>
               <Globe className="h-3 w-3" />
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center space-x-1 outline-none text-xs font-light hover:text-[#000000] transition-colors">
@@ -303,7 +309,12 @@ export default function Header() {
           <Link href="/login">
             <Button
               variant="outline"
-              className="hidden sm:flex items-center space-x-2 bg-transparent h-8 px-3 border-gray-300 text-gray-700 hover:border-[#000000] hover:text-[#000000] transition-all duration-200"
+              className={cn(
+                "hidden sm:flex items-center space-x-2 bg-transparent h-8 px-3 transition-all duration-200",
+                (isScrolled || (pathname === "/" && !isScrolled))
+                  ? "border-white/40 text-white hover:border-gold hover:text-gold" 
+                  : "border-onyx/30 text-onyx hover:border-gold hover:text-gold"
+              )}
             >
               <User className="h-3 w-3" />
               <span className="text-xs font-light">Login</span>
@@ -320,7 +331,10 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div
-            className="lg:hidden cursor-pointer transition-colors duration-200 text-gray-700 hover:text-[#000000] p-1"
+            className={cn(
+              "lg:hidden cursor-pointer transition-colors duration-200 p-1",
+              (isScrolled || (pathname === "/" && !isScrolled)) ? "text-white hover:text-gold" : "text-onyx hover:text-gold"
+            )}
             onClick={() => setIsOverlayOpen(true)}
           >
             <Menu className="h-5 w-5 sm:h-6 sm:w-6" />

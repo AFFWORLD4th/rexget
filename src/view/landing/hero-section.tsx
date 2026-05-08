@@ -93,22 +93,20 @@ export default function HeroSection() {
         </motion.div>
       )}
 
-      {/* Cinematic Video Background with Depth */}
-      <div className="absolute inset-0 w-full h-full scale-105 animate-zoomInOut">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/bgImage.webp"
-        >
-          <source src="/her.mp4" type="video/mp4" />
-        </video>
+      {/* Magnificent AI-Generated Dubai Sky View Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/images/dubai-sky-hero.png"
+          alt="Magnificent Dubai Sky View"
+          fill
+          priority
+          className="object-cover scale-105 animate-zoomInOut"
+          sizes="100vw"
+        />
         {/* Layered Overlays for Cinematic Depth */}
-        <div className="absolute inset-0 bg-onyx/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/20 to-transparent z-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-onyx/80 via-onyx/40 to-transparent z-20" />
+        <div className="absolute inset-0 bg-onyx/30 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/10 to-transparent z-20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-onyx/60 via-onyx/20 to-transparent z-20" />
       </div>
 
       {/* Main Content - Left Aligned for Impact */}
@@ -146,7 +144,7 @@ export default function HeroSection() {
                   key={tab}
                   onClick={() => handleTabChange(tab)}
                   className={`group relative py-2 text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-500 ${
-                    activeTab === tab ? "text-gold font-bold" : "text-white/40 hover:text-white"
+                    activeTab === tab ? "text-gold font-bold" : "text-white/60 hover:text-white"
                   }`}
                 >
                   {tab}
@@ -181,7 +179,7 @@ export default function HeroSection() {
                   {/* Filters Grid */}
                   <div className="grid grid-cols-3 gap-4 w-full lg:w-auto px-4">
                     <div className="flex flex-col gap-1">
-                      <span className="text-[10px] text-gold/60 tracking-widest uppercase ml-3">Bedrooms</span>
+                       <span className="text-[11px] text-white/90 font-medium tracking-[0.2em] uppercase ml-3">Bedrooms</span>
                       <Select value={bedsFilter} onValueChange={setBedsFilter}>
                         <SelectTrigger className="border-0 bg-transparent text-white focus:ring-0 text-sm font-bold min-w-[100px] hover:text-gold transition-colors">
                           <SelectValue placeholder="ANY" />
@@ -194,7 +192,7 @@ export default function HeroSection() {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <span className="text-[10px] text-gold/60 tracking-widest uppercase ml-3">Min Price</span>
+                       <span className="text-[11px] text-white/90 font-medium tracking-[0.2em] uppercase ml-3">Min Price</span>
                       <Select value={minPrice} onValueChange={setMinPrice}>
                         <SelectTrigger className="border-0 bg-transparent text-white focus:ring-0 text-sm font-bold min-w-[120px] hover:text-gold transition-colors">
                           <SelectValue placeholder="ANY" />
@@ -206,7 +204,7 @@ export default function HeroSection() {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <span className="text-[10px] text-gold/60 tracking-widest uppercase ml-3">Max Price</span>
+                       <span className="text-[11px] text-white/90 font-medium tracking-[0.2em] uppercase ml-3">Max Price</span>
                       <Select value={maxPrice} onValueChange={setMaxPrice}>
                         <SelectTrigger className="border-0 bg-transparent text-white focus:ring-0 text-sm font-bold min-w-[120px] hover:text-gold transition-colors">
                           <SelectValue placeholder="ANY" />
@@ -221,7 +219,7 @@ export default function HeroSection() {
                   {/* CTA Button */}
                   <Button
                     onClick={handleSearch}
-                    className="w-full lg:w-auto bg-gradient-to-br from-gold via-gold-dark to-gold text-onyx hover:scale-[1.02] active:scale-95 px-12 py-8 rounded-2xl font-bold text-xs tracking-[0.3em] uppercase transition-all duration-500 shadow-[0_15px_40px_rgba(212,175,55,0.25)] border-t border-white/20"
+                    className="w-full lg:w-auto !bg-[#D4AF37] !text-black hover:!bg-[#F3E5AB] hover:scale-[1.02] active:scale-95 px-12 py-8 rounded-2xl font-bold text-xs tracking-[0.3em] uppercase transition-all duration-500 shadow-[0_15px_40px_rgba(212,175,55,0.4)] border-t border-white/20"
                   >
                     Find Sanctuary
                   </Button>

@@ -26,7 +26,7 @@ export interface JobApplicationData {
 
 export const getJobs = async (page: number = 1, size: number = 10) => {
   try {
-    const res = await api.get(`https://evid-api.propfusion.io/jobs?page=${page}&size=${size}`);
+    const res = await api.get(`https://rexgate-api.propfusion.io/jobs?page=${page}&size=${size}`);
     return res.data;
   } catch (error) {
     throw handleApiError(error);
@@ -35,7 +35,7 @@ export const getJobs = async (page: number = 1, size: number = 10) => {
 
 export const getJobById = async (id: string) => {
   try {
-    const res = await api.get(`https://evid-api.propfusion.io/jobs/${id}`);
+    const res = await api.get(`https://rexgate-api.propfusion.io/jobs/${id}`);
     return res.data;
   } catch (error) {
     throw handleApiError(error);
@@ -52,7 +52,7 @@ export const applyForJob = async (jobId: string, data: JobApplicationData) => {
     formData.append("resume", data.resume);
 
     const res = await api.post(
-      `https://evid-api.propfusion.io/jobs/${jobId}/apply`,
+      `https://rexgate-api.propfusion.io/jobs/${jobId}/apply`,
       formData,
       {
         headers: {

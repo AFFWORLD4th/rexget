@@ -494,10 +494,7 @@ function Buy() {
                 onClick={handleSearch}
                 className="h-12 w-12 sm:h-14 sm:w-14 bg-gradient-to-r from-[#000000] to-[#171717] hover:from-[#171717] hover:to-[#991B1B] text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                <Icon
-                  icon="iconamoon:search-fill"
-                  className="text-white text-lg sm:text-xl"
-                />
+                <Search className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               </Button>
             </div>
           </div>

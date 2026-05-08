@@ -56,9 +56,14 @@ export default function CommunitiesCard({ data }: { data: CommunityData }) {
         <div className="h-2/5 bg-gradient-to-br from-white via-[#F8F6F0] to-white p-6 flex flex-col justify-between">
           {/* Header */}
           <div>
-            <h3 className="text-xl font-light font-serif text-gray-800 mb-3 leading-tight">
+            <h3 className="text-xl font-light font-serif text-gray-800 mb-2 leading-tight">
               {data?.name}
             </h3>
+            {data?.order_description && (
+              <p className="text-sm text-gray-600 font-sans line-clamp-2 mb-4 leading-relaxed">
+                {data.order_description}
+              </p>
+            )}
           </div>
 
 
